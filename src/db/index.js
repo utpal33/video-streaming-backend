@@ -6,7 +6,7 @@ import chalk from "chalk";  // for css without using css
 const connectDB = async()=>{
     try {
         const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URL}${DB_NAME}`);
-        console.log(`\n mongodb connected || DB_HOST ${connectionInstance.connection.host}`);
+        console.log(chalk.blueBright(`\n mongodb connected || DB_HOST ${connectionInstance.connect}`));
         
     } catch (error) {
         console.log(chalk.red.bold("mongodb connection failed") , error);
