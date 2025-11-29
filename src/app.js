@@ -24,6 +24,15 @@ app.use(express.static("public"));
 app.use(cookieParser())
 
 
+// touts import
+import userRouter from './routes/user.routes.js'
+
+// ROUTES
+// also define the version of routes
+//  Always use middleware to define routes in industry level
+
+// routes declaration
+app.use('/api/v1/users', userRouter)
 
 
 

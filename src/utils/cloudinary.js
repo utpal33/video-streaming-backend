@@ -9,7 +9,7 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET, 
 });
 
-const fileUploader = async function (localFilePath) {
+const uploadOnCloudinary = async function (localFilePath) {
     try {
         if (!localFilePath) return null;
         const response = await cloudinary.uploader.upload(localFilePath, {
@@ -22,4 +22,6 @@ const fileUploader = async function (localFilePath) {
         console.log(chalk.bgRedBright('issue with file uploading', error));
         return null
     }
-}
+};
+
+export {uploadOnCloudinary};

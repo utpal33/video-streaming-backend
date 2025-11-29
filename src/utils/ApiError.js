@@ -21,4 +21,6 @@ class ApiError extends Error{
     }
 }
 
+console.log(new ApiError(200, 'dododo'))
+
 export default ApiError;
