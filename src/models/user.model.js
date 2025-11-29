@@ -69,10 +69,9 @@ userSchema.pre('save', function(next){
 */
 
 userSchema.pre('save', async function(){
-    if(!this.isModified('password')) return next();
+    if(!this.isModified('password')) return;
 
-    this.password = bcrypt.hash(this.password, 10);
-    next()
+    this.password = await bcrypt.hash(this.password, 10);
 })
 
 
@@ -90,9 +89,9 @@ userSchema.methods.generateAccessToken = function (){
             email : this.email,
             username : this.username,
         },
-        process.env.ACCESSS_TOKEN_SECRET,
+        process.env.ACCESS_TOKEN_SECRET,
         {
-            expiresIn : process.env.ACCESSS_TOKEN_EXPIRY
+            expiresIn : process.env.ACCESS_TOKEN_EXPIRY
         }
     )
 };
